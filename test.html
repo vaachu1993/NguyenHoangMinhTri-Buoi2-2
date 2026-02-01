@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts & Comments Manager</title>
+    <script src="main.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        input[type="submit"] {
+            padding: 8px 16px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        input[type="submit"][value="delete"] {
+            background-color: #dc3545;
+        }
+        input[type="submit"][value="delete"]:hover {
+            background-color: #c82333;
+        }
+        input[type="submit"][value="restore"] {
+            background-color: #28a745;
+        }
+        input[type="submit"][value="restore"]:hover {
+            background-color: #218838;
+        }
+        .form-container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Posts & Comments Management System</h1>
+    
+    <!-- Posts Section -->
+    <div class="section">
+        <h2>Posts</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Views</th>
+                        <th>Delete/Restore</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div> 
+        <div class="form-container">
+            <h3>Add/Edit Post</h3>
+            <div>
+                <label>ID:</label>
+                <input type="text" id="id_txt" placeholder="Auto (leave empty for new)" readonly/>
+            </div>
+            <div>
+                <label>Title:</label>
+                <input type="text" id="title_txt" placeholder="Enter title"/>
+            </div>
+            <div>
+                <label>Views:</label>
+                <input type="text" id="view_txt" placeholder="Enter views"/>
+            </div>
+            <div>
+                <input type="submit" value="Save Post" onclick="Save()"/>
+                <input type="submit" value="Clear" onclick="ClearForm()" style="background-color: #6c757d;"/>
+            </div>
+        </div>   
+    </div>
+
+    <!-- Comments Section -->
+    <div class="section">
+        <h2>Comments</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Text</th>
+                        <th>Post ID</th>
+                        <th>Delete/Restore</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody id="comments-table-body">
+                </tbody>
+            </table>
+        </div> 
+        <div class="form-container">
+            <h3>Add/Edit Comment</h3>
+            <div>
+                <label>ID:</label>
+                <input type="text" id="comment_id_txt" placeholder="Auto (leave empty for new)" readonly/>
+            </div>
+            <div>
+                <label>Text:</label>
+                <input type="text" id="comment_text_txt" placeholder="Enter comment text" style="width: 400px;"/>
+            </div>
+            <div>
+                <label>Post ID:</label>
+                <input type="text" id="comment_postId_txt" placeholder="Enter post ID"/>
+            </div>
+            <div>
+                <input type="submit" value="Save Comment" onclick="SaveComment()"/>
+                <input type="submit" value="Clear" onclick="ClearCommentForm()" style="background-color: #6c757d;"/>
+            </div>
+        </div>   
+    </div>
+</body>
+</html>
